@@ -133,6 +133,9 @@ public class OffsetCurveBuilder {
                 dest.setOrdinate(numCoordinates, 1, source.getOrdinate(0, 1));
                 simplified = simplified.getFactory().createLinearRing(dest);
             }
+            if (simplified == null || simplified.isEmpty()) {
+                return null;
+            }
             LineString offsetLine = offset(simplified);
             if (offsetLine != null) {
                 offsets.add(offsetLine);
